@@ -132,40 +132,19 @@ bool fillFrom(int y, int val)
 	return false;
 }
 
-void digHole(int holeCnt)
-{
-	int idx[81];
-	int i, k;
-	for (i = 0; i<81; i++)
-	{
-		hole[i / 9][i % 9] = 0;
-		idx[i] = i;
-	}
-	for (i = 0; i<holeCnt; i++)//随机挖洞位置  
-	{
-		k = rand() % 81;
-		int tmp = idx[k];
-		idx[k] = idx[i];
-		idx[i] = tmp;
-	}
-	for (i = 0; i<holeCnt; i++)
-	{
-		hole[idx[i] / 9][idx[i] % 9] = 1;
-	}
-}
 
 
 int main(int argc, char* argv[])
 {
-	int num = 0;
+	double num = 0;
 	cin >> num;
 	try { out.open("sudoku.txt", ios::trunc); }
 	catch (exception e) {
 		cout << "打开文件：sudoku.txt 失败！！";
 	}
-	for(int i = 0;i < num;i++){
+	for (double i = 0; i < num; i++) {
 		init();
-		srand((unsigned)(time(NULL) + i ));
+		srand((unsigned)(time(NULL) + i));
 		while (!fillFrom(0, 1));
 		printSudo();
 	}
