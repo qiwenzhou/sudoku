@@ -137,14 +137,21 @@ bool fillFrom(int y, int val)
 int main(int argc, char* argv[])
 {
 	double num = 0;
-	cin >> num;
+	while (!(cin >> num)) {
+		cin.clear();
+		// reset input
+		while (cin.get() != '\n')
+			continue;
+		// get rid of bad input
+		cout << "Please enter a number: ";
+	}
 	try { out.open("sudoku.txt", ios::trunc); }
 	catch (exception e) {
 		cout << "打开文件：sudoku.txt 失败！！";
 	}
 	for (double i = 0; i < num; i++) {
 		init();
-		srand((unsigned)(time(NULL) + i));
+		srand((unsigned)(time(NULL) + i));//使用不重复的时间种子
 		while (!fillFrom(0, 1));
 		printSudo();
 	}
