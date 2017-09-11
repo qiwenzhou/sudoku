@@ -136,7 +136,7 @@ bool fillFrom(int y, int val)
 
 int main(int argc, char* argv[])
 {
-	double num = 0;
+	int num = 0;
 	while (!(cin >> num)) {
 		cin.clear();
 		// reset input
@@ -145,6 +145,7 @@ int main(int argc, char* argv[])
 		// get rid of bad input
 		cout << "Please enter a number: ";
 	}
+	//sscanf_s(argv[2], "%d", &num);
 	try { out.open("sudoku.txt", ios::trunc); }
 	catch (exception e) {
 		cout << "打开文件：sudoku.txt 失败！！";
